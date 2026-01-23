@@ -44,10 +44,6 @@ public class ViewConfigEngine
                         window.Title = title;
                 }
             }
-                    window.Title = titleProp.GetString();
-                }
-            }
-
             // Additional configuration can be added here
 
             return window;
