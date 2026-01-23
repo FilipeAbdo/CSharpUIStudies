@@ -1,5 +1,4 @@
-
-name: .NET Build
+name: FirstMVVMApp .NET Build
 
 on:
   push:
@@ -30,4 +29,3 @@ jobs:
 
       - name: Build solution
         run: dotnet build FirstMVVMApp.sln --configuration Release --no-restore
-
