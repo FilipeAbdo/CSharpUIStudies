@@ -1,3 +1,4 @@
+
 name: .NET Build
 
 on:
@@ -5,6 +6,11 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_call:
+
+defaults:
+  run:
+    working-directory: FirstMVVMApp
 
 jobs:
   build:
@@ -24,3 +30,4 @@ jobs:
 
       - name: Build solution
         run: dotnet build FirstMVVMApp.sln --configuration Release --no-restore
+
