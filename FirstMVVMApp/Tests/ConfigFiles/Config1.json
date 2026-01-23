@@ -1,0 +1,61 @@
+{
+    "CustomControls": {
+        "CustomTextBox": {
+            "Type": "StackPanel",
+            "Orientation": "Vertical",
+            "Margin": "10",
+            "Spacing": "5",
+            "Children": [
+                {
+                    "Type": "Label",
+                    "Properties": {
+                        "Text": "Enter your name:",
+                        "FontSize": "14"
+                    }
+                },
+                {
+                    "Type": "TextBox",
+                    "PlaceHolder": "Enter your name",
+                    "Properties": {
+                        "Width": "200",
+                        "Height": "30",
+                        "FontSize": "14"
+                    }
+                }
+            ]
+        }
+    },
+    
+    "MainWindow": {
+        "Title": "My First MVVM App Test",
+        "Width": 800,
+        "Height": 600,
+        "StackPanel": {
+            "Orientation": "Vertical",
+            "Margin": "20",
+            "Spacing": "10",
+            "Children": [
+                {
+                    "Type": "Label",
+                    "Properties": {
+                        "Text": "Welcome to My First MVVM App!",
+                        "FontSize": "24",
+                        "FontWeight": "Bold"
+                    }
+                },
+                {
+                    "Type": "CustomTextBox"
+                },
+                {
+                    "Type": "Button",
+                    "Properties": {
+                        "Content": "Submit",
+                        "Width": "100",
+                        "Height": "40",
+                        "FontSize": "16"
+                    }
+                }
+            ]
+        }
+    }
+}
