@@ -1,4 +1,4 @@
-name: Root: Call .NET Build
+name: 'Root: Call .NET Build'
 
 on:
   workflow_dispatch:
@@ -8,4 +8,4 @@ on:
 
 jobs:
   call-build:
-    uses: ./FirstMVVMApp-dotnet-build.yml
+    uses: ./.github/workflows/FirstMVVMApp-dotnet-build.yml@main
