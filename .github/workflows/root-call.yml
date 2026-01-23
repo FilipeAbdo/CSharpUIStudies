@@ -8,4 +8,4 @@ on:
 
 jobs:
   call-build:
-    uses: ./.github/workflows/FirstMVVMApp-dotnet-build.yml@main
+    uses: ./.github/workflows/FirstMVVMApp-dotnet-build.yml
