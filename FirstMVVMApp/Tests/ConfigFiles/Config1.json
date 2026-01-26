@@ -2,27 +2,29 @@
     "CustomControls": {
         "CustomTextBox": {
             "Type": "StackPanel",
-            "Orientation": "Vertical",
-            "Margin": "10",
-            "Spacing": "5",
-            "Children": [
-                {
-                    "Type": "Label",
-                    "Properties": {
-                        "Text": "Enter your name:",
-                        "FontSize": "14"
+            "Properties":{
+                "Orientation": "Vertical",
+                "Margin": "10",
+                "Spacing": "5",
+                "Children": [
+                    {
+                        "Type": "Label",
+                        "Properties": {
+                            "Text": "Enter your name:",
+                            "FontSize": "14"
+                        }
+                    },
+                    {
+                        "Type": "TextBox",
+                        "PlaceHolder": "Enter your name",
+                        "Properties": {
+                            "Width": "200",
+                            "Height": "30",
+                            "FontSize": "14"
+                        }
                     }
-                },
-                {
-                    "Type": "TextBox",
-                    "PlaceHolder": "Enter your name",
-                    "Properties": {
-                        "Width": "200",
-                        "Height": "30",
-                        "FontSize": "14"
-                    }
-                }
-            ]
+                ]
+            }
         }
     },
     
