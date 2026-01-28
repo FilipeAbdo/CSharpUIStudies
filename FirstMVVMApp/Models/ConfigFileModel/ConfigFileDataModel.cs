@@ -1,4 +1,4 @@
-namespace FirstMVVMApp.ConfigFileModel
+namespace FirstMVVMApp.Models.ConfigFileModel
 {
     public static class ConfigFileDataModel
     {
@@ -15,7 +15,7 @@ namespace FirstMVVMApp.ConfigFileModel
             public const string Margin = "Margin";
         }
 
-        public static class StackPanel 
+        public static class StackPanel
         {
             public const string name = "StackPanel";
             public const string Orientation = "Orientation";
@@ -42,6 +42,6 @@ namespace FirstMVVMApp.ConfigFileModel
             public const string Children = "Children";
         }
 
-        
+
     }
 }

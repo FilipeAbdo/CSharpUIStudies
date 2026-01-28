@@ -9,10 +9,10 @@ namespace FirstMVVMApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; set;} = "Welcome to Avalonia!";
-    public string AppTitle { get; set;} = "Tesing Dynamic Title Binding";
+    public string Greeting { get; set; } = "Welcome to Avalonia!";
+    public string AppTitle { get; set; } = "Tesing Dynamic Title Binding";
 
-    public ICommand ClickMeCommand => new RelayCommand(() => 
+    public ICommand ClickMeCommand => new RelayCommand(() =>
     {
         Greeting = "Button Clicked!";
         OnPropertyChanged(nameof(Greeting));
@@ -24,7 +24,8 @@ public partial class MainWindowViewModel : ViewModelBase
         if (property != null)
         {
             var value = property.GetValue(this) as string;
-            if (value != null){
+            if (value != null)
+            {
                 return value;
             }
             throw new InvalidOperationException(
