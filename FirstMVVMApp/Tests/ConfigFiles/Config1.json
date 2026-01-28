@@ -29,7 +29,7 @@
     },
     
     "MainWindow": {
-        "Title": "My First MVVM App Test",
+        "Title": "@Greeting",
         "Width": 800,
         "Height": 600,
         "StackPanel": {

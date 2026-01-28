@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using FirstMVVMApp.Views;
 using FirstMVVMApp.ViewModels;
 using System.Text.Json;
@@ -34,14 +35,54 @@ public class ViewConfigEngine
 
             var window = new MainWindow();
 
+            // Subscribe to ViewModel error requests so the view can show a modal dialog
+            var vm = window.DataContext as FirstMVVMApp.ViewModels.MainWindowViewModel;
+            if (vm != null)
+            {
+                vm.ErrorRequested += (msg) =>
+                {
+                    // Ensure UI thread execution and avoid showing modal on a non-visible owner.
+                    Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
+                    {
+                        var dlg = new ErrorWindow(msg);
+
+                        if (window.IsVisible)
+                        {
+                            await dlg.ShowDialog<bool?>(window);
+                        }
+                        else
+                        {
+                            // Wait until window is opened, then show modal with owner
+                            void openedHandler(object? s, EventArgs e)
+                            {
+                                window.Opened -= openedHandler;
+                                // Fire-and-forget the dialog show so we don't block initialization
+                                _ = dlg.ShowDialog<bool?>(window);
+                            }
+
+                            window.Opened += openedHandler;
+                        }
+
+                        (Avalonia.Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.Shutdown();
+                    });
+                };
+            }
+
             // Set window title from config
             if (root.TryGetProperty(ConfigFileDataModel.Root.MainWindow, out JsonElement mainWindowProp) && mainWindowProp.ValueKind == JsonValueKind.Object)
             {
                 if (mainWindowProp.TryGetProperty(ConfigFileDataModel.Window.Title, out JsonElement titleProp) && titleProp.ValueKind == JsonValueKind.String)
                 {
                     var title = titleProp.GetString()?.Trim();
-                    if (!string.IsNullOrEmpty(title))
-                        window.Title = title;
+                    if (!string.IsNullOrEmpty(title)){
+                        if (title.StartsWith("@")){
+                            window.Title = vm?.GetValueByPropertyName(title.Substring(1)) ?? "Default Title";
+                        }
+                        else
+                        {
+                            window.Title = title;
+                        }
+                    }
                 }
             }
             // Additional configuration can be added here
